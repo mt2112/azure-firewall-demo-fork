@@ -5,14 +5,23 @@ resource parentFirewall 'Microsoft.Network/firewallPolicies@2021-05-01' existing
 }
 
 resource vnetRuleCollectionGroup 'Microsoft.Network/firewallPolicies/ruleCollectionGroups@2020-11-01' = {
-  name: 'OnPremises-Rules-Group'
+  name: 'Spoke-To-Spoke-Rules-Group'
   parent: parentFirewall
   properties: {
-    priority: 400
+    priority: 300
     ruleCollections: [
       {
-        name: 'Allow-OnPremises-To-VNET-Network-Rules'
-        priority: 401
+        name: 'Allow-Online-To-Corp-Network-Rules'
+        ruleCollectionType: 'FirewallPolicyFilterRuleCollection'
+        priority: 301
+        action: {
+          type: 'Allow'
+        }
+        rules: []
+      }
+      {
+        name: 'Allow-Online-To-Corp-Application-Rules'
+        priority: 302
         ruleCollectionType: 'FirewallPolicyFilterRuleCollection'
         action: {
           type: 'Allow'
@@ -20,8 +29,8 @@ resource vnetRuleCollectionGroup 'Microsoft.Network/firewallPolicies/ruleCollect
         rules: []
       }
       {
-        name: 'Allow-OnPremises-To-VNET-Application-Rules'
-        priority: 402
+        name: 'Allow-VNET-To-VNET-Network-Rules'
+        priority: 303
         ruleCollectionType: 'FirewallPolicyFilterRuleCollection'
         action: {
           type: 'Allow'
@@ -29,18 +38,9 @@ resource vnetRuleCollectionGroup 'Microsoft.Network/firewallPolicies/ruleCollect
         rules: []
       }
       {
-        name: 'Allow-VNET-To-OnPremises-Network-Rules'
-        ruleCollectionType: 'FirewallPolicyFilterRuleCollection'
-        priority: 403
-        action: {
-          type: 'Allow'
-        }
-        rules: []
-      }
-      {
-        name: 'Allow-VNET-To-OnPremises-Application-Rules'
-        ruleCollectionType: 'FirewallPolicyFilterRuleCollection'
-        priority: 404
+        name: 'Allow-VNET-To-VNET-Application-Rules'
+        priority: 303
+        ruleCollectionType: 'FirewallPolicyNatRuleCollection'
         action: {
           type: 'Allow'
         }
