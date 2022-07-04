@@ -37,7 +37,7 @@ module onPremises '4-on-premises/on-premises.bicep' = {
   ]
 }
 
-module spokes '5-spoke/spokes.bicep' = {
+module spokes '5-spoke-specific/spokes.bicep' = {
   name: 'rcg-spokes-deployment'
   params: {
     parentName: parentName
