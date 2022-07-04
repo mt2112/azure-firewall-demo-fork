@@ -17,7 +17,7 @@ module hub '2-hub/hub.bicep' = {
   ]
 }
 
-module vnet '3-spoke/spoke.bicep' = {
+module vnet '3-spoke-to-spoke/spoke.bicep' = {
   name: 'rcg-vnet-deployment'
   params: {
     parentName: parentName

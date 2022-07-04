@@ -21,7 +21,7 @@ resource spokesRuleCollectionGroup 'Microsoft.Network/firewallPolicies/ruleColle
       }
       {
         name: 'Allow-SpokeX-To-Application-Rules'
-        priority: 502
+        priority: 503
         ruleCollectionType: 'FirewallPolicyFilterRuleCollection'
         action: {
           type: 'Allow'

@@ -39,8 +39,8 @@ resource vnetRuleCollectionGroup 'Microsoft.Network/firewallPolicies/ruleCollect
       }
       {
         name: 'Allow-VNET-To-VNET-Application-Rules'
-        priority: 303
-        ruleCollectionType: 'FirewallPolicyNatRuleCollection'
+        priority: 304
+        ruleCollectionType: 'FirewallPolicyFilterRuleCollection'
         action: {
           type: 'Allow'
         }

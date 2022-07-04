@@ -22,7 +22,7 @@ resource hubRuleCollectionGroup 'Microsoft.Network/firewallPolicies/ruleCollecti
       {
         name: 'Allow-Hub-Application-Rules'
         ruleCollectionType: 'FirewallPolicyFilterRuleCollection'
-        priority: 201
+        priority: 202
         action: {
           type: 'Allow'
         }
